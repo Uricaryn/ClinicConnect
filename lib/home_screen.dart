@@ -86,7 +86,7 @@ class HomeScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            LoginScreen()), // MainScreen'e yönlendirir
+                            const LoginScreen()), // MainScreen'e yönlendirir
                     (Route<dynamic> route) =>
                         false, // Geriye dönülebilecek sayfa yok
                   );

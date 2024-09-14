@@ -35,10 +35,10 @@ class _LoginScreenState extends State<LoginScreen>
   bool _rememberMe = false;
 
   Future<bool> _login(String userName, String password) async {
-    final baseUrl =
+    const baseUrl =
         'http://uricaryn-001-site1.ltempurl.com/api/User'; // API URL
-    final username = '11195200'; // API username
-    final apiPassword = '60-dayfreetrial'; // API password
+    const username = '11195200'; // API username
+    const apiPassword = '60-dayfreetrial'; // API password
 
     final credentials = '$username:$apiPassword';
     final encodedCredentials = base64Encode(utf8.encode(credentials));
@@ -94,14 +94,14 @@ class _LoginScreenState extends State<LoginScreen>
     return Scaffold(
       body: AnimatedBackground(
         vsync: this,
-        behaviour: RectanglesBehaviour(),
+        behaviour: RacingLinesBehaviour(),
         child: Column(
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 20.0),
               child: Center(
                 child: Image.asset(
-                  'assets/logo1.png',
+                  'assets/logo.gif',
                   width: 500,
                   height: 300,
                   fit: BoxFit.cover,
@@ -134,25 +134,26 @@ class _LoginScreenState extends State<LoginScreen>
                           hintStyle: const TextStyle(color: Colors.pink),
                           prefixIcon:
                               const Icon(Icons.person, color: Colors.pink),
-                          filled: false,
+                          filled: true,
+                          fillColor: const Color(0xFFFFF5F5),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
                             borderSide: const BorderSide(
-                              color: Colors.pink,
+                              color: Colors.cyan,
                               width: 2.0,
                             ),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
                             borderSide: const BorderSide(
-                              color: Colors.pink,
+                              color: Colors.cyan,
                               width: 2.0,
                             ),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
                             borderSide: const BorderSide(
-                              color: Colors.pink,
+                              color: Colors.cyan,
                               width: 2.5,
                             ),
                           ),
@@ -181,26 +182,26 @@ class _LoginScreenState extends State<LoginScreen>
                               });
                             },
                           ),
-                          filled: false,
+                          filled: true,
                           fillColor: const Color(0xFFFFF5F5),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
                             borderSide: const BorderSide(
-                              color: Colors.pink,
+                              color: Colors.cyan,
                               width: 2.0,
                             ),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
                             borderSide: const BorderSide(
-                              color: Colors.pink,
+                              color: Colors.cyan,
                               width: 2.0,
                             ),
                           ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
                             borderSide: const BorderSide(
-                              color: Colors.pink,
+                              color: Colors.cyan,
                               width: 2.5,
                             ),
                           ),
@@ -227,7 +228,7 @@ class _LoginScreenState extends State<LoginScreen>
                       ElevatedButton(
                         onPressed: _handleLogin,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.pink,
+                          backgroundColor: Colors.cyan,
                           padding: const EdgeInsets.symmetric(vertical: 15),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
@@ -254,7 +255,7 @@ class _LoginScreenState extends State<LoginScreen>
                             // );
                           },
                           child: const Text(
-                            "Hesabınız Yok Mu? Kayıt Olun",
+                            "",
                             style: TextStyle(color: Colors.pink, fontSize: 16),
                           ),
                         ),
