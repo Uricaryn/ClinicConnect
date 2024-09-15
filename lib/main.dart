@@ -40,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen>
     const username = '11195200'; // API username
     const apiPassword = '60-dayfreetrial'; // API password
 
-    final credentials = '$username:$apiPassword';
+    const credentials = '$username:$apiPassword';
     final encodedCredentials = base64Encode(utf8.encode(credentials));
 
     try {
