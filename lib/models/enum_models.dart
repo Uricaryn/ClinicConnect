@@ -12,7 +12,7 @@ extension ProcedureTypeExtension on ProcedureType {
   }
 
   int toCode() {
-    return this.index;
+    return index;
   }
 
   String get name {

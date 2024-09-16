@@ -6,6 +6,8 @@ import 'models/enum_models.dart'; // ProcedureType enum import
 import 'package:http/http.dart' as http;
 
 class AppointmentPage extends StatefulWidget {
+  const AppointmentPage({super.key});
+
   @override
   _AppointmentPageState createState() => _AppointmentPageState();
 }
@@ -36,7 +38,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
   }
 
   Future<void> _createAppointment() async {
-    final apiUrl =
+    const apiUrl =
         'http://uricaryn-001-site1.ltempurl.com/api/Appointment/Create';
 
     final dateTime = _selectedDateTime?.toUtc().toIso8601String() ?? '';
@@ -58,7 +60,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
       'status': status,
     };
 
-    final credentials = '11195200:60-dayfreetrial';
+    const credentials = '11195200:60-dayfreetrial';
     final encodedCredentials = base64Encode(utf8.encode(credentials));
 
     try {
@@ -100,10 +102,13 @@ class _AppointmentPageState extends State<AppointmentPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Randevu Oluştur')),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
+      appBar: AppBar(
+        title: const Text('Randevu Oluştur'),
+        backgroundColor: Colors.pink, // Pembe renk
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -119,7 +124,21 @@ class _AppointmentPageState extends State<AppointmentPage> {
               const SizedBox(height: 32),
               ElevatedButton(
                 onPressed: _createAppointment,
-                child: const Text('Randevu Oluştur'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.pink, // Pembe arka plan rengi
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
+                child: const Text(
+                  'Randevu Oluştur',
+                  style: TextStyle(
+                    color: Colors.white, // Beyaz metin rengi
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ],
           ),
@@ -129,38 +148,72 @@ class _AppointmentPageState extends State<AppointmentPage> {
   }
 
   Widget _buildPatientDropdown() {
-    return DropdownButton<String>(
-      hint: const Text('Hasta Seçiniz'),
-      value: _selectedPatientId,
-      items: _patients.map((patient) {
-        return DropdownMenuItem<String>(
-          value: patient.id,
-          child: Text(patient.fullName),
-        );
-      }).toList(),
-      onChanged: (newValue) {
-        setState(() {
-          _selectedPatientId = newValue;
-        });
-      },
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.2),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: DropdownButton<String>(
+        hint: const Text('Hasta Seçiniz',
+            style: TextStyle(color: Colors.black54)),
+        value: _selectedPatientId,
+        items: _patients.map((patient) {
+          return DropdownMenuItem<String>(
+            value: patient.id,
+            child: Text(patient.fullName),
+          );
+        }).toList(),
+        onChanged: (newValue) {
+          setState(() {
+            _selectedPatientId = newValue;
+          });
+        },
+        isExpanded: true,
+        underline: SizedBox(),
+      ),
     );
   }
 
   Widget _buildProcedureTypeDropdown() {
-    return DropdownButton<ProcedureType>(
-      hint: const Text('Prosedür Türü Seçiniz'),
-      value: _selectedProcedureType,
-      items: ProcedureType.values.map((procedure) {
-        return DropdownMenuItem<ProcedureType>(
-          value: procedure,
-          child: Text(procedure.name),
-        );
-      }).toList(),
-      onChanged: (newValue) {
-        setState(() {
-          _selectedProcedureType = newValue;
-        });
-      },
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.2),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: DropdownButton<ProcedureType>(
+        hint: const Text('Prosedür Türü Seçiniz',
+            style: TextStyle(color: Colors.black54)),
+        value: _selectedProcedureType,
+        items: ProcedureType.values.map((procedure) {
+          return DropdownMenuItem<ProcedureType>(
+            value: procedure,
+            child: Text(procedure.name),
+          );
+        }).toList(),
+        onChanged: (newValue) {
+          setState(() {
+            _selectedProcedureType = newValue;
+          });
+        },
+        isExpanded: true,
+        underline: SizedBox(),
+      ),
     );
   }
 
@@ -175,55 +228,114 @@ class _AppointmentPageState extends State<AppointmentPage> {
         }
       },
       child: AbsorbPointer(
-        child: TextField(
-          controller: TextEditingController(
-              text: _selectedDateTime != null
-                  ? _selectedDateTime!.toLocal().toString()
-                  : ''),
-          decoration:
-              const InputDecoration(labelText: 'Randevu Tarihi ve Saati'),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.2),
+                spreadRadius: 2,
+                blurRadius: 5,
+                offset: const Offset(0, 3),
+              ),
+            ],
+          ),
+          child: TextField(
+            controller: TextEditingController(
+                text: _selectedDateTime != null
+                    ? _selectedDateTime!.toLocal().toString()
+                    : ''),
+            decoration: const InputDecoration(
+              labelText: 'Randevu Tarihi ve Saati',
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.all(16),
+              labelStyle: TextStyle(color: Colors.pink), // Pembe renk
+            ),
+          ),
         ),
       ),
     );
   }
 
   Widget _buildNotesField() {
-    return TextField(
-      controller: _notesController,
-      decoration: const InputDecoration(labelText: 'Notlar'),
-      maxLines: 3,
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.2),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: TextField(
+        controller: _notesController,
+        decoration: const InputDecoration(
+          labelText: 'Notlar',
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.all(16),
+          labelStyle: TextStyle(color: Colors.pink), // Pembe renk
+        ),
+        maxLines: 4,
+      ),
     );
   }
 
   Widget _buildStatusField() {
-    return TextField(
-      controller: _statusController,
-      decoration: const InputDecoration(labelText: 'Durum'),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.2),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: TextField(
+        controller: _statusController,
+        decoration: const InputDecoration(
+          labelText: 'Durum',
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.all(16),
+          labelStyle: TextStyle(color: Colors.pink), // Pembe renk
+        ),
+      ),
     );
   }
 
   Future<DateTime?> _showDateTimePicker(BuildContext context) async {
     final initialDate = DateTime.now();
-    final selectedDate = await showDatePicker(
+    final pickedDate = await showDatePicker(
       context: context,
       initialDate: initialDate,
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2101),
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2100),
     );
-    if (selectedDate == null) return null;
 
-    final timeOfDay = await showTimePicker(
-      context: context,
-      initialTime: TimeOfDay.fromDateTime(initialDate),
-    );
-    if (timeOfDay == null) return null;
+    if (pickedDate != null) {
+      final pickedTime = await showTimePicker(
+        context: context,
+        initialTime: TimeOfDay.fromDateTime(initialDate),
+      );
 
-    return DateTime(
-      selectedDate.year,
-      selectedDate.month,
-      selectedDate.day,
-      timeOfDay.hour,
-      timeOfDay.minute,
-    );
+      if (pickedTime != null) {
+        return DateTime(
+          pickedDate.year,
+          pickedDate.month,
+          pickedDate.day,
+          pickedTime.hour,
+          pickedTime.minute,
+        );
+      }
+    }
+    return null;
   }
 }

@@ -55,3 +55,7 @@
 -dontwarn com.google.android.play.core.tasks.OnFailureListener
 -dontwarn com.google.android.play.core.tasks.OnSuccessListener
 -dontwarn com.google.android.play.core.tasks.Task
+
+-keep class io.flutter.view.** { *; }
+-keep class io.flutter.embedding.** { *; }
+-printmapping mapping.txt
