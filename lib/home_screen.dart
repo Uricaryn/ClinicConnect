@@ -1,5 +1,6 @@
 import 'package:crm1/main.dart';
 import 'package:flutter/material.dart';
+import 'appointment_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final String userName;
@@ -33,13 +34,18 @@ class HomeScreen extends StatelessWidget {
               ),
               const SizedBox(height: 30),
 
-              // Kartlarla düzenlenmiş butonlar
+              // Randevu Oluştur butonuna yönlendirme ekleniyor
               buildCardButton(
                 context,
                 title: 'Randevu Oluştur',
                 icon: Icons.calendar_today,
                 onTap: () {
-                  // Randevu oluşturma işlevi
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AppointmentPage(),
+                    ),
+                  );
                 },
               ),
               const SizedBox(height: 20),
@@ -85,8 +91,9 @@ class HomeScreen extends StatelessWidget {
                   Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>
-                            const LoginScreen()), // MainScreen'e yönlendirir
+                      builder: (context) =>
+                          const LoginScreen(), // MainScreen'e yönlendirir
+                    ),
                     (Route<dynamic> route) =>
                         false, // Geriye dönülebilecek sayfa yok
                   );

@@ -95,177 +95,164 @@ class _LoginScreenState extends State<LoginScreen>
       body: AnimatedBackground(
         vsync: this,
         behaviour: RacingLinesBehaviour(),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: Center(
-                child: Image.asset(
-                  'assets/logo.gif',
-                  width: 500,
-                  height: 300,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            const SizedBox(height: 50),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "Hoşgeldiniz!",
-                        style: TextStyle(
-                          color: Colors.pink,
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(height: 20),
-                      TextField(
-                        controller: _userNameController,
-                        decoration: InputDecoration(
-                          hintText: 'Kullanıcı Adı',
-                          hintStyle: const TextStyle(color: Colors.pink),
-                          prefixIcon:
-                              const Icon(Icons.person, color: Colors.pink),
-                          filled: true,
-                          fillColor: const Color(0xFFFFF5F5),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                            borderSide: const BorderSide(
-                              color: Colors.cyan,
-                              width: 2.0,
-                            ),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                            borderSide: const BorderSide(
-                              color: Colors.cyan,
-                              width: 2.0,
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                            borderSide: const BorderSide(
-                              color: Colors.cyan,
-                              width: 2.5,
-                            ),
-                          ),
-                        ),
-                        style: const TextStyle(color: Colors.black),
-                      ),
-                      const SizedBox(height: 20),
-                      TextField(
-                        controller: _passwordController,
-                        obscureText: _obscureText,
-                        decoration: InputDecoration(
-                          hintText: 'Şifre',
-                          hintStyle: const TextStyle(color: Colors.pink),
-                          prefixIcon:
-                              const Icon(Icons.lock, color: Colors.pink),
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              _obscureText
-                                  ? Icons.visibility_off
-                                  : Icons.visibility,
-                              color: Colors.pink,
-                            ),
-                            onPressed: () {
-                              setState(() {
-                                _obscureText = !_obscureText;
-                              });
-                            },
-                          ),
-                          filled: true,
-                          fillColor: const Color(0xFFFFF5F5),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                            borderSide: const BorderSide(
-                              color: Colors.cyan,
-                              width: 2.0,
-                            ),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                            borderSide: const BorderSide(
-                              color: Colors.cyan,
-                              width: 2.0,
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                            borderSide: const BorderSide(
-                              color: Colors.cyan,
-                              width: 2.5,
-                            ),
-                          ),
-                        ),
-                        style: const TextStyle(color: Colors.black),
-                      ),
-                      const SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Checkbox(
-                            value: _rememberMe,
-                            onChanged: (bool? value) {
-                              setState(() {
-                                _rememberMe = value ?? false;
-                              });
-                            },
-                            activeColor: Colors.pink,
-                          ),
-                          const Text('Beni Hatırla',
-                              style: TextStyle(color: Colors.pink)),
-                        ],
-                      ),
-                      const SizedBox(height: 20),
-                      ElevatedButton(
-                        onPressed: _handleLogin,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.cyan,
-                          padding: const EdgeInsets.symmetric(vertical: 15),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                        child: const Text(
-                          'Giriş Yap',
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      Center(
-                        child: GestureDetector(
-                          onTap: () {
-                            // Kayıt Olma işlemi yapılacak
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => SignupScreen(),
-                            //   ),
-                            // );
-                          },
-                          child: const Text(
-                            "",
-                            style: TextStyle(color: Colors.pink, fontSize: 16),
-                          ),
-                        ),
-                      ),
-                    ],
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: Center(
+                  child: Image.asset(
+                    'assets/logo.gif',
+                    width: 500,
+                    height: 300,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
-            ),
-          ],
+              const SizedBox(height: 50),
+              const Text(
+                "Hoşgeldiniz!",
+                style: TextStyle(
+                  color: Colors.pink,
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 20),
+              TextField(
+                controller: _userNameController,
+                decoration: InputDecoration(
+                  hintText: 'Kullanıcı Adı',
+                  hintStyle: const TextStyle(color: Colors.pink),
+                  prefixIcon: const Icon(Icons.person, color: Colors.pink),
+                  filled: true,
+                  fillColor: const Color(0xFFFFF5F5),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: const BorderSide(
+                      color: Colors.cyan,
+                      width: 2.0,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: const BorderSide(
+                      color: Colors.cyan,
+                      width: 2.0,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: const BorderSide(
+                      color: Colors.cyan,
+                      width: 2.5,
+                    ),
+                  ),
+                ),
+                style: const TextStyle(color: Colors.black),
+              ),
+              const SizedBox(height: 20),
+              TextField(
+                controller: _passwordController,
+                obscureText: _obscureText,
+                decoration: InputDecoration(
+                  hintText: 'Şifre',
+                  hintStyle: const TextStyle(color: Colors.pink),
+                  prefixIcon: const Icon(Icons.lock, color: Colors.pink),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _obscureText ? Icons.visibility_off : Icons.visibility,
+                      color: Colors.pink,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _obscureText = !_obscureText;
+                      });
+                    },
+                  ),
+                  filled: true,
+                  fillColor: const Color(0xFFFFF5F5),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: const BorderSide(
+                      color: Colors.cyan,
+                      width: 2.0,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: const BorderSide(
+                      color: Colors.cyan,
+                      width: 2.0,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: const BorderSide(
+                      color: Colors.cyan,
+                      width: 2.5,
+                    ),
+                  ),
+                ),
+                style: const TextStyle(color: Colors.black),
+              ),
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  Checkbox(
+                    value: _rememberMe,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        _rememberMe = value ?? false;
+                      });
+                    },
+                    activeColor: Colors.pink,
+                  ),
+                  const Text('Beni Hatırla',
+                      style: TextStyle(color: Colors.pink)),
+                ],
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: _handleLogin,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.cyan,
+                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                child: const Text(
+                  'Giriş Yap',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Center(
+                child: GestureDetector(
+                  onTap: () {
+                    // Kayıt Olma işlemi yapılacak
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => SignupScreen(),
+                    //   ),
+                    // );
+                  },
+                  child: const Text(
+                    "",
+                    style: TextStyle(color: Colors.pink, fontSize: 16),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
