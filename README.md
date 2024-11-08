@@ -71,6 +71,7 @@ Contributions are welcome! Please follow these steps:
 - Implement Docker support for easy deployment.
 - Add support for multi-language interfaces.
 - Integration with third-party healthcare services (e.g., insurance providers).
+- Deployed as SWA Preview on Azure -- https://agreeable-stone-03409d01e-preview.westus2.5.azurestaticapps.net
 
 ## License
 
