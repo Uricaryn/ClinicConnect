@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/059e91f9-2e52-4fd8-a1b7-85ffb05cf05a/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/ClinicConnect",
+    "appService.deploySubpath": "."
+}
