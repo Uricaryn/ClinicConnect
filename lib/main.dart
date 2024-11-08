@@ -36,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen>
 
   Future<bool> _login(String userName, String password) async {
     const baseUrl =
-        'http://uricaryn-001-site1.ltempurl.com/api/User'; // API URL
+        'https://medicalcrmapi-eddka8a3a0cvgmbt.canadacentral-01.azurewebsites.net/api/User'; // API URL
     const username = '11195200'; // API username
     const apiPassword = '60-dayfreetrial'; // API password
 

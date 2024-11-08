@@ -4,7 +4,7 @@ import '../models/patient_model.dart';
 
 class PatientService {
   final String apiUrl =
-      'http://uricaryn-001-site1.ltempurl.com/api/Patient/All'; // API URL'nizi buraya ekleyin
+      'https://medicalcrmapi-eddka8a3a0cvgmbt.canadacentral-01.azurewebsites.net/api/Patient/All'; // API URL'nizi buraya ekleyin
 
   // API'ye erişim için kullanıcı adı ve şifre
   final String username = '11195200'; // API username

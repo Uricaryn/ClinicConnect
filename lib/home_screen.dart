@@ -1,6 +1,7 @@
 import 'package:crm1/main.dart';
 import 'package:flutter/material.dart';
 import 'appointment_screen.dart';
+import 'appointments_list_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final String userName;
@@ -78,10 +79,15 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 20),
               buildCardButton(
                 context,
-                title: 'Notlar',
+                title: 'Randevular',
                 icon: Icons.note,
                 onTap: () {
-                  // Notlar işlevi
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AppointmentsPage(),
+                    ),
+                  );
                 },
               ),
               const SizedBox(height: 20),

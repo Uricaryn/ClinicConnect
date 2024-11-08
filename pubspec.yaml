@@ -10,6 +10,7 @@ dependencies:
   animated_background: ^2.0.0
   flutter:
     sdk: flutter
+  syncfusion_flutter_datagrid: ^27.1.58
   http: ^0.13.6
 
 dev_dependencies:

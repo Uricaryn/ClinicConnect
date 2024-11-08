@@ -39,7 +39,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
 
   Future<void> _createAppointment() async {
     const apiUrl =
-        'http://uricaryn-001-site1.ltempurl.com/api/Appointment/Create';
+        'https://medicalcrmapi-eddka8a3a0cvgmbt.canadacentral-01.azurewebsites.net/api/Appointment/Create';
 
     final dateTime = _selectedDateTime?.toUtc().toIso8601String() ?? '';
     final notes = _notesController.text;
@@ -177,7 +177,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
           });
         },
         isExpanded: true,
-        underline: SizedBox(),
+        underline: const SizedBox(),
       ),
     );
   }
@@ -212,7 +212,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
           });
         },
         isExpanded: true,
-        underline: SizedBox(),
+        underline: const SizedBox(),
       ),
     );
   }
