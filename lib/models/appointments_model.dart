@@ -18,12 +18,14 @@ class Appointment {
 
   factory Appointment.fromJson(Map<String, dynamic> json) {
     return Appointment(
-      id: json['Id'],
-      patientId: json['PatientId'],
-      date: DateTime.parse(json['Date']),
-      procedureName: json['ProcedureName'],
-      notes: json['Notes'],
-      status: json['Status'],
+      id: json['id'] ?? '',
+      patientId: json['patientId'] ?? '',
+      date: DateTime.parse(json['date'] ??
+          ''), // This should work fine with the provided date format
+      procedureName: json['procedureName']
+          .toString(), // Convert to string if it's an integer
+      notes: json['notes'] ?? '',
+      status: json['status'] ?? '',
     );
   }
 }
