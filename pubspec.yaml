@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   syncfusion_flutter_datagrid: ^27.1.58
-  http: ^0.13.6
+  http: ^1.2.2
 
 dev_dependencies:
   flutter_test:
